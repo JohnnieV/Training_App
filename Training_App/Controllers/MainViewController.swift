@@ -75,8 +75,9 @@ class MainViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+    // создаем экземпляр класса
     private let calendarView = CalendarView()
+    
     // перерисовка лэйаута(метод) !!! РАЗОБРАТЬСЯ В НЕМ
     override func viewDidLayoutSubviews() {
         // именно для создания круга из квадрата скругление происходит делением ширины на 2(вне зависимости от возможного изменения ширины в будущем будет работать

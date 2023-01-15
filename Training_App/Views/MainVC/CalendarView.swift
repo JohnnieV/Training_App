@@ -5,16 +5,17 @@
 //  Created by Владимир Смирнов on 14.01.2023.
 //
 
+
 import UIKit
 
 class CalendarView: UIView {
     
     // создаем коллекшн вью
     private let collectionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout() // построение коллекции по опред порядку(сетке)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = .none
         return collectionView
     }()
     
@@ -25,7 +26,9 @@ class CalendarView: UIView {
         
         setupViews()
         setConstraints()
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: idCalendarCell) // регистрируем ячейку
+        setDelegates()
+        
+        collectionView.register(CalendarCollectionViewCell.self, forCellWithReuseIdentifier: idCalendarCell) // регистрируем ячейку
     }
 
     required init?(coder: NSCoder) {
@@ -44,22 +47,21 @@ class CalendarView: UIView {
         collectionView.delegate = self // делегатом будем мы сами(CalendarView)
         collectionView.dataSource = self
         
-    }   
+    }
 }
+
 //MARK: - UICollectionViewDataSource
 extension CalendarView: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         7 // кол-во дней в календаре = items = 7. по сути писаться должно return 7, но так как 1 строка можно опустить return
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // создаем переиспользуемую ячейку
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath) as! CalendarCollectionViewCell
         return cell
     }
-    
-    
 }
 
 //MARK: - UICollectionViewDelegate
@@ -71,6 +73,18 @@ extension CalendarView: UICollectionViewDelegate { // подписали на п
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
+extension CalendarView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 34,
+               height: collectionView.frame.height) // высота равна высоте коллекшн вью
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        3 // минимальное расстояние между айтемами
+    }
+}
 
 
 //MARK: - SetConstraints
