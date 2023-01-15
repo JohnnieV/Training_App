@@ -56,7 +56,6 @@ class MainViewController: UIViewController {
         button.layer.cornerRadius = 10
         button.setTitle("Add workout", for: .normal) // заголовок(имя) кнопки
         button.titleLabel?.font = .robotoMedium12()
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.tintColor = .specialDarkGreen // цвет плюса кнопки переопределяем, потому что в системном типе цвет синий UIButton(type: .system)
         //располоение картинки от краев(доьбавляем как будто отступы)
         button.imageEdgeInsets = UIEdgeInsets(top: 0,
@@ -65,9 +64,9 @@ class MainViewController: UIViewController {
                                               right: 0)
         // расположение тайтла от краев
         button.titleEdgeInsets = UIEdgeInsets(top: 50,
-                                              left: -35,
+                                              left: -40,
                                               bottom: 0,
-                                              right: 5)
+                                              right: 0)
         button.setImage(UIImage(named: "addWorkout"), for: .normal) // картинка у кнопки по имени файла addWorkout
         // ставим таргет кнопке сэлф - потому что нажимаем на себя, селектор - метод addWorkoutButtonTapped, для обычного нажатия на кнопку
         button.addTarget(self, action: #selector(addWorkoutButtonTapped), for: .touchUpInside)
@@ -77,6 +76,8 @@ class MainViewController: UIViewController {
     }()
     // создаем экземпляр класса
     private let calendarView = CalendarView()
+    private let weatherView = WeatheView()
+    
     
     // перерисовка лэйаута(метод) !!! РАЗОБРАТЬСЯ В НЕМ
     override func viewDidLayoutSubviews() {
@@ -100,6 +101,8 @@ class MainViewController: UIViewController {
         view.addSubview(userPhotoImageView) // добавляем нашу вьюху(название в скобках) в основную вьюху
         view.addSubview(userNameLabel)
         view.addSubview(addWorkoutButton)
+        view.addSubview(weatherView)
+        
     }
     
     @objc func addWorkoutButtonTapped() {
@@ -144,6 +147,13 @@ extension MainViewController {
             addWorkoutButton.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 5),
             addWorkoutButton.heightAnchor.constraint(equalToConstant: 80),
             addWorkoutButton.widthAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        NSLayoutConstraint.activate([
+            weatherView.leadingAnchor.constraint(equalTo: addWorkoutButton.trailingAnchor, constant: 10),
+            weatherView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 5),
+            weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+            weatherView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
 }

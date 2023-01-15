@@ -20,6 +20,7 @@
 		58700B4929730094000D9932 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58700B4829730094000D9932 /* Roboto-Bold.ttf */; };
 		58700B4C297326D2000D9932 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B4B297326D2000D9932 /* CalendarView.swift */; };
 		58700B4F2973FB4B000D9932 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B4E2973FB4B000D9932 /* CalendarCollectionViewCell.swift */; };
+		58700B5129740717000D9932 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B5029740717000D9932 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		58700B4829730094000D9932 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		58700B4B297326D2000D9932 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		58700B4E2973FB4B000D9932 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		58700B5029740717000D9932 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				58700B4D29734475000D9932 /* Cells */,
 				58700B4B297326D2000D9932 /* CalendarView.swift */,
+				58700B5029740717000D9932 /* WeatherView.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				58700B4C297326D2000D9932 /* CalendarView.swift in Sources */,
 				58700B442972F0DB000D9932 /* UIStackView + Extensions.swift in Sources */,
 				58700B272972E397000D9932 /* MainViewController.swift in Sources */,
+				58700B5129740717000D9932 /* WeatherView.swift in Sources */,
 				58700B232972E397000D9932 /* AppDelegate.swift in Sources */,
 				58700B4F2973FB4B000D9932 /* CalendarCollectionViewCell.swift in Sources */,
 				58700B422972F0AA000D9932 /* UIView + Extensions.swift in Sources */,
