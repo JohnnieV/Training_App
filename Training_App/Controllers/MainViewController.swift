@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let addWorkoutButton: UIButton = {
+    private lazy var addWorkoutButton: UIButton = {
         let button = UIButton(type: .system) // тип кнопки системный
         
         button.backgroundColor = .specialYellow
@@ -74,9 +74,32 @@ class MainViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private let workoutTodayLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Workout today"
+        label.textColor = .specialLightBrown
+        label.font = .robotoMedium14()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .none
+        tableView.separatorStyle = .none
+        tableView.bounces = false // убираем оттяжку таблицы вниз
+        tableView.showsVerticalScrollIndicator = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+        
+    }()
+    
     // создаем экземпляр класса
     private let calendarView = CalendarView()
     private let weatherView = WeatheView()
+    
+    private let idWorkoutTableViewCell = "idWorkoutTableViewCell"
     
     
     // перерисовка лэйаута(метод) !!! РАЗОБРАТЬСЯ В НЕМ
@@ -90,7 +113,13 @@ class MainViewController: UIViewController {
         
         setUpViews()
         setConstraints()
-       
+        setDelegate()
+        tableView.register(WorkoutTableViewCell.self, forCellReuseIdentifier: idWorkoutTableViewCell) // регистрируем ячейку таблицы
+    }
+    
+    private func setDelegate() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     // метод для настроек всех вьюх
     private func setUpViews() {
@@ -102,6 +131,8 @@ class MainViewController: UIViewController {
         view.addSubview(userNameLabel)
         view.addSubview(addWorkoutButton)
         view.addSubview(weatherView)
+        view.addSubview(workoutTodayLabel)
+        view.addSubview(tableView)
         
     }
     
@@ -111,6 +142,31 @@ class MainViewController: UIViewController {
 
 
 }
+
+//MARK: - UITableViewDataSource
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10 // кол-во строк в таблице
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //создаем переиспользуемую ячейку
+        let cell = tableView.dequeueReusableCell(withIdentifier: idWorkoutTableViewCell, for: indexPath) as! WorkoutTableViewCell
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+
+extension MainViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100 // высота ячейки
+    }
+}
+
+//MARK: - Set Constraints
 
 extension MainViewController {
     private func setConstraints() { // приват метод потому что не хотим чтоб вызывался извне
@@ -154,6 +210,18 @@ extension MainViewController {
             weatherView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 5),
             weatherView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             weatherView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        NSLayoutConstraint.activate([
+            workoutTodayLabel.topAnchor.constraint(equalTo: addWorkoutButton.bottomAnchor, constant: 10),
+            workoutTodayLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: workoutTodayLabel.bottomAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
 }
