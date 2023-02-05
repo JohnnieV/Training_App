@@ -23,7 +23,7 @@ class StatisticViewController: UIViewController {
         return button
     }()
     
-    let button2: UIButton = {
+    lazy var button2: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false

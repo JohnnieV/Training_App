@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let WindowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: WindowScene)
-        window?.rootViewController = MainViewController() // назначаем исходную вьюху
+        window?.rootViewController = MainTabBarController() // назначаем исходную вьюху
         window?.makeKeyAndVisible() // отображаем сам вью контроллер
         window?.overrideUserInterfaceStyle = .light //ставим принудительно только светлую тему
     }
