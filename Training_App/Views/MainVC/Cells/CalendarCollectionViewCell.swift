@@ -60,6 +60,11 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         addSubview(dayOfWeekLabel)
         addSubview(numberOfDayLabel)
     }
+    // метод конфигурации ячейки(данные о дне и числе)
+    func cellConfigure(weekArray: [[String]], indexPath: IndexPath) {
+        numberOfDayLabel.text = weekArray[1][indexPath.item]
+        dayOfWeekLabel.text = weekArray[0][indexPath.item]
+    }
     
     private func setConstraints() {
         

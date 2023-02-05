@@ -27,15 +27,6 @@ class MainViewController: UIViewController {
         return imageView
     }()
     
-//    private let calendarView: UIView = {
-//        let view = UIView()
-//
-//        view.backgroundColor = .specialGreen
-//        view.layer.cornerRadius = 10
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
-    
     private let userNameLabel: UILabel = {
         let label = UILabel()
         
@@ -91,8 +82,18 @@ class MainViewController: UIViewController {
         tableView.bounces = false // убираем оттяжку таблицы вниз
         tableView.showsVerticalScrollIndicator = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isHidden = true
         return tableView
         
+    }()
+    
+    private let noWorkoutImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "noWorkout")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isHidden = false // прячем изображение
+        return imageView
     }()
     
     // создаем экземпляр класса
@@ -133,11 +134,17 @@ class MainViewController: UIViewController {
         view.addSubview(weatherView)
         view.addSubview(workoutTodayLabel)
         view.addSubview(tableView)
+        view.addSubview(noWorkoutImageView)
         
     }
     
     @objc func addWorkoutButtonTapped() {
-        print("addWorkoutButtonTapped")
+        let newWorkoutViewController = NewWorkoutViewController()
+        
+        newWorkoutViewController.modalPresentationStyle = .fullScreen // открывается в полный экран, а не как модальное окно по умолчанию
+        newWorkoutViewController.modalTransitionStyle = .flipHorizontal // горизонтальный переворот вьюхи при появлении
+        present(newWorkoutViewController, animated: true) // переход ко второму вью контроллеру
+        
     }
 
 
@@ -222,6 +229,13 @@ extension MainViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            noWorkoutImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            noWorkoutImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            noWorkoutImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1), // высота картинки = ширина вьюхи * 1
+            noWorkoutImageView.topAnchor.constraint(equalTo: workoutTodayLabel.bottomAnchor, constant: 0)
         ])
     }
 }

@@ -61,7 +61,7 @@ class WorkoutTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let startButton: UIButton = {
+    private lazy var startButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .specialYellow
         button.layer.cornerRadius = 10
@@ -98,7 +98,7 @@ class WorkoutTableViewCell: UITableViewCell {
                                       axis: .horizontal,
                                       spacing: 10)
         addSubview(labelsStackView)
-        contentView.addSubview(startButton)
+        contentView.addSubview(startButton) // чтоб кнопка работала как кнопка
     }
     
     @objc private func startButtonTapped() {

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58193EB4298FDA42001FF9C1 /* NewWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EB3298FDA42001FF9C1 /* NewWorkoutViewController.swift */; };
+		58193EB7298FEA6A001FF9C1 /* DateAndRepeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EB6298FEA6A001FF9C1 /* DateAndRepeatView.swift */; };
+		58193EB9298FEAB2001FF9C1 /* RepsOrTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EB8298FEAB2001FF9C1 /* RepsOrTimerView.swift */; };
+		58193EBB2990069B001FF9C1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EBA2990069B001FF9C1 /* MainTabBarController.swift */; };
+		58193EBD29900911001FF9C1 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EBC29900911001FF9C1 /* StatisticViewController.swift */; };
+		58193EBF29900931001FF9C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EBE29900931001FF9C1 /* ProfileViewController.swift */; };
+		58193EC129900C4E001FF9C1 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58193EC029900C4E001FF9C1 /* UILabel + Extensions.swift */; };
 		58700B232972E397000D9932 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B222972E397000D9932 /* AppDelegate.swift */; };
 		58700B252972E397000D9932 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B242972E397000D9932 /* SceneDelegate.swift */; };
 		58700B272972E397000D9932 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58700B262972E397000D9932 /* MainViewController.swift */; };
@@ -25,6 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58193EB3298FDA42001FF9C1 /* NewWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWorkoutViewController.swift; sourceTree = "<group>"; };
+		58193EB6298FEA6A001FF9C1 /* DateAndRepeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndRepeatView.swift; sourceTree = "<group>"; };
+		58193EB8298FEAB2001FF9C1 /* RepsOrTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepsOrTimerView.swift; sourceTree = "<group>"; };
+		58193EBA2990069B001FF9C1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		58193EBC29900911001FF9C1 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		58193EBE29900931001FF9C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		58193EC029900C4E001FF9C1 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
 		58700B1F2972E397000D9932 /* Training_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Training_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58700B222972E397000D9932 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58700B242972E397000D9932 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58193EB5298FEA44001FF9C1 /* NewWorkoutVC */ = {
+			isa = PBXGroup;
+			children = (
+				58193EB6298FEA6A001FF9C1 /* DateAndRepeatView.swift */,
+				58193EB8298FEAB2001FF9C1 /* RepsOrTimerView.swift */,
+			);
+			path = NewWorkoutVC;
+			sourceTree = "<group>";
+		};
 		58700B162972E397000D9932 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +126,11 @@
 		58700B382972E855000D9932 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				58193EBA2990069B001FF9C1 /* MainTabBarController.swift */,
 				58700B262972E397000D9932 /* MainViewController.swift */,
+				58193EB3298FDA42001FF9C1 /* NewWorkoutViewController.swift */,
+				58193EBC29900911001FF9C1 /* StatisticViewController.swift */,
+				58193EBE29900931001FF9C1 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -131,6 +158,7 @@
 				58700B3F2972EF2C000D9932 /* UIColor + Extensions.swift */,
 				58700B412972F0AA000D9932 /* UIView + Extensions.swift */,
 				58700B432972F0DB000D9932 /* UIStackView + Extensions.swift */,
+				58193EC029900C4E001FF9C1 /* UILabel + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -158,6 +186,7 @@
 		58700B4A297326B8000D9932 /* MainVC */ = {
 			isa = PBXGroup;
 			children = (
+				58193EB5298FEA44001FF9C1 /* NewWorkoutVC */,
 				58700B4D29734475000D9932 /* Cells */,
 				58700B4B297326D2000D9932 /* CalendarView.swift */,
 				58700B5029740717000D9932 /* WeatherView.swift */,
@@ -248,15 +277,22 @@
 			files = (
 				58700B3E2972ED59000D9932 /* UIFont + Extensions.swift in Sources */,
 				58700B402972EF2C000D9932 /* UIColor + Extensions.swift in Sources */,
+				58193EBB2990069B001FF9C1 /* MainTabBarController.swift in Sources */,
 				58700B4C297326D2000D9932 /* CalendarView.swift in Sources */,
 				58700B442972F0DB000D9932 /* UIStackView + Extensions.swift in Sources */,
 				587F2E9D2982D00500194C68 /* WorkoutTableViewCell.swift in Sources */,
+				58193EB7298FEA6A001FF9C1 /* DateAndRepeatView.swift in Sources */,
+				58193EBF29900931001FF9C1 /* ProfileViewController.swift in Sources */,
 				58700B272972E397000D9932 /* MainViewController.swift in Sources */,
 				58700B5129740717000D9932 /* WeatherView.swift in Sources */,
 				58700B232972E397000D9932 /* AppDelegate.swift in Sources */,
+				58193EB9298FEAB2001FF9C1 /* RepsOrTimerView.swift in Sources */,
 				58700B4F2973FB4B000D9932 /* CalendarCollectionViewCell.swift in Sources */,
+				58193EB4298FDA42001FF9C1 /* NewWorkoutViewController.swift in Sources */,
+				58193EC129900C4E001FF9C1 /* UILabel + Extensions.swift in Sources */,
 				58700B422972F0AA000D9932 /* UIView + Extensions.swift in Sources */,
 				58700B252972E397000D9932 /* SceneDelegate.swift in Sources */,
+				58193EBD29900911001FF9C1 /* StatisticViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

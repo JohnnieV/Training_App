@@ -48,6 +48,27 @@ class CalendarView: UIView {
         collectionView.dataSource = self
         
     }
+    
+    private func weekArray() -> [[String]] {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_GB") // локаль англ, чтоб дни были по англ
+        dateFormatter.dateFormat = "EEEEEE" // в формате 2 букв(Пн, Вт...)
+        
+        var weekArray : [[String]] = [[],[]] // [массив названий дней], [массив с числами]
+        let calendar = Calendar.current // обращаемся к календарю
+        let today = Date()
+        
+        for i in -6...0 { // берем 6 предыдущих дней
+            let date = calendar.date(byAdding: .weekday, value: i, to: today)
+            guard let date = date else { return weekArray }
+            let components = calendar.dateComponents([.day], from: date)
+            weekArray[1].append(String(components.day ?? 0))
+            let weekDay = dateFormatter.string(from: date)
+            weekArray[0].append(String(weekDay))
+        }
+        return weekArray
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -60,6 +81,11 @@ extension CalendarView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // создаем переиспользуемую ячейку
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: idCalendarCell, for: indexPath) as! CalendarCollectionViewCell
+        cell.cellConfigure(weekArray: weekArray(), indexPath: indexPath)
+        
+        if indexPath.item == 6 {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+        }
         return cell
     }
 }
